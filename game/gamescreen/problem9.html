@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="display:flex; flex-direction: row;">
+    <!-- <div style="width:143.5px; height:900px;"></div> -->
+    <div class="background1" id="container">
+        <img src="../../images/background.png" class="backgroundimage">
+        <div class="process_box">
+            <p class="process_text">진행상황<br>1 / 10개</p>
+        </div>
+        <div class="screen">
+            <div class="recycle_container">
+                <div class="recycle_box" id="paper">
+                    <img src="../../images/recycle1.png" class="recycle_image" style="width:98%; height:98%;">
+                </div>
+                <div class="recycle_box" id="canbottle">
+                    <img src="../../images/recycle2.png" class="recycle_image" id="canbottle_img">
+                </div>
+                <div class="recycle_box" id="plastic">
+                    <img src="../../images/recycle3.png" class="recycle_image">
+                </div>
+                <div class="recycle_box" id="general">
+                    <img src="../../images/recycle4.png" class="recycle_image" style="margin-left: 15px;">
+                </div>
+                <div class="recycle_box" id="food">
+                    <img src="../../images/recycle5.png" class="recycle_image" style="margin-left: 22px;">
+                </div>
+                <div class="recycle_box" id="bag">
+                    <img src="../../images/recycle6.png" class="recycle_image" style="margin-left: 10px;">
+                </div>
+            </div>
+
+            <div class="recycle_text_container">
+                <div class="recycle_text_box0"></div>
+                <div class="recycle_text_box1">
+                    <p class="recycle_text">종이</p>
+                </div>
+                <div class="recycle_text_box2">
+                    <p class="recycle_text">캔 / 병</p>
+                </div>
+                <div class="recycle_text_box3">
+                    <p class="recycle_text">플라스틱</p>
+                </div>
+                <div class="recycle_text_box4">
+                    <p class="recycle_text">일반쓰레기</p>
+                </div>
+                <div class="recycle_text_box5">
+                    <p class="recycle_text">음식물</p>
+                </div>
+                <div class="recycle_text_box6">
+                    <p class="recycle_text">비닐</p>
+                </div>
+            </div>
+        </div>
+
+        <img src="../../images/logo2.png" class="robot">
+
+        <img src="../../images/coke.png" id="item" draggable="true">
+    </div>
+
+
+    <div class="answer_shade" style="height: 0px; display: none;" id="answer_shade"></div>
+    <div class="correct_answer_box" style="height: 0px; display: none;" id="correct_answer_box">
+        <img src="../../images/logo_pass.png"
+            class="answer_img">
+        <div class="answer_text_box">
+            <p class="answer_text">정말 잘했어 !<br>콜라 캔은 캔에 버리면 돼</p>
+            <button class="next_btn" id="correct_next_btn">다음으로</button>
+        </div>
+    </div>
+    <div class="wrong_answer_box" style="height: 0px; display: none;" id="wrong_answer_box">
+        <img src="../../images/logo_wrong.png"
+            class="answer_img">
+        <div class="answer_text_box">
+            <p class="answer_text">콜라 캔은 캔에 버려야 해 !<br>이제 알겠지?</p>
+            <button class="next_btn" id="wrong_next_btn">다음으로</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="./script.js"></script>
+    <script>
+        var urlParams;
+        var name;
+        var trash1;
+        var trash2;
+        var trash3;
+        var trash4;
+        var trash5;
+        var trash6;
+        var trash7;
+        var trash8;
+
+        window.onload = function () {
+            urlParams = new URLSearchParams(window.location.search);
+            name = urlParams.get("name");
+            trash1 = urlParams.get("trash1");
+            trash2 = urlParams.get("trash2");
+            trash3 = urlParams.get("trash3");
+            trash4 = urlParams.get("trash4");
+            trash5 = urlParams.get("trash5");
+            trash6 = urlParams.get("trash6");
+            trash7 = urlParams.get("trash7");
+            trash8 = urlParams.get("trash8");
+        }
+        document.querySelector("#correct_next_btn").addEventListener("click", navigateToNextPage_Correct);
+        document.querySelector("#wrong_next_btn").addEventListener("click", navigateToNextPage_Wrong);
+
+        function navigateToNextPage_Correct() {
+            var is_answer = "true";
+            window.location.href = "problem10.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(trash4) + "&trash5=" + encodeURIComponent(trash5) + "&trash6=" + encodeURIComponent(trash6) + "&trash7=" + encodeURIComponent(trash7) + "&trash8=" + encodeURIComponent(trash8) + "&trash9=" + encodeURIComponent(is_answer);
+        }
+
+        function navigateToNextPage_Wrong() {
+            var is_answer = "false";
+            window.location.href = "problem10.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(trash4) + "&trash5=" + encodeURIComponent(trash5) + "&trash6=" + encodeURIComponent(trash6) + "&trash7=" + encodeURIComponent(trash7) + "&trash8=" + encodeURIComponent(trash8) + "&trash9=" + encodeURIComponent(is_answer);
+        }
+    </script>
+</body>
+
+
+</html>

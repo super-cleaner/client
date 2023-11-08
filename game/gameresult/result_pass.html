@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: -2;
+        -ms-overflow-style: none; /* 인터넷 익스플로러 */
+        scrollbar-width: none; /* 파이어폭스 */
+      }
+
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      #container {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        width: 1600px;
+        height: 900px;
+        overflow: hidden;
+        touch-action: none;
+        margin: auto;
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 12.92%, rgba(255, 255, 255, 0.22) 36.88%, rgba(255, 255, 255, 0.16) 55.11%, rgba(255, 255, 255, 0.16) 73.96%, rgba(0, 0, 0, 0.40) 88.54%), url("../../images/background_pass.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      #whitebox {
+        position: absolute;
+    top: 139px;
+    margin-left: 105px;
+    margin-right: 70px;
+    width: 1425px;
+    height: 691px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.50);
+    touch-action: none;
+      }
+
+      #resultbox {
+        box-sizing: border-box;
+
+        position: absolute;
+        width: 777.5px;
+        height: 601.66px;
+        right: 130px;
+        top: 200.83px;
+
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid #000000;
+        border-radius: 30px;
+      }
+
+      #quiztext {
+        position: absolute;
+        width: 299px;
+        height: 650px;
+        left: 154px;
+        top: 52px;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 100;
+        font-size: 50px;
+        line-height: 80px;
+        /* or 217% */
+
+        color: #000000;
+      }
+
+      #answertext {
+        position: absolute;
+        width: 299px;
+        height: 650px;
+        left: 534px;
+        bottom: 597px;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 100;
+        font-size: 50px;
+        line-height: 80px;
+
+        color: #000000;
+      }
+
+      #subbox {
+        position: absolute;
+        width: 313px;
+        height: 74px;
+        top: 39.166px; 
+        left: 54px;
+        border: 3px solid #ffffff;
+        border-radius: 25px;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 10;
+        font-size: 25px;
+        line-height: 50px;
+        text-align: center;
+        background-color: transparent;
+
+        color: #ffffff;
+      }
+
+      #subicon {
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        /* 좌표 값 조정 */
+        top: 56px;
+        left: 70px;
+      }
+      #subicon img {
+        width: 100%;
+        height: 100%;
+        display: block; /* 이미지를 블록 요소로 설정 */
+        z-index: 1;
+      }
+
+      #subtext {
+        position: absolute;
+        width: 313px;
+        height: 74px;
+        right: 56px;
+        bottom: 65px;
+        margin: 20px 0 0 54px;
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 32px;
+        text-align: center;
+        background-color: transparent;
+        border-radius: 25px;
+        border: none;
+        color: #ffffff;
+      }
+
+      #title {
+        position: absolute;
+        width: 677.5px;
+        height: 100px;
+        left: 470px;
+        top: 70px;
+        justify-content: center;
+        text-align: center;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 95px;
+        line-height: 165px;
+        z-index: 4;
+
+        /* identical to box height */
+
+        color: #000000;
+        -webkit-text-stroke: 2px white;
+      }
+
+      #text {
+        /* 지구가 쓰레기 더미에 뒤덮였어 ! 나랑 같이 지구를 지키러갈래? */
+
+        position: absolute;
+        width: 1500px;
+        height: 190px;
+        right: 250px;
+        top: 317.5px;
+        margin: 0 auto;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 10;
+        font-size: 30px;
+        line-height: 50px;
+        text-align: center;
+
+        color: #000000;
+      }
+
+      #score {
+        position: absolute;
+        width: 181px;
+        height: 61px;
+        left: 66.66px;
+        top: 160px;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 51px;
+        text-align: center;
+
+        color: #000000;
+      }
+
+      #point {
+        position: absolute;
+        width: 300px;
+        height: 145px;
+        left: 180.833px;
+        top: 98.33px;
+
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 300;
+        font-size: 130px;
+        line-height: 127px;
+        text-align: center;
+
+        color: #0029ff;
+      }
+
+      #next {
+        position: absolute;
+        width: 219.166px;
+        height: 80.833px;
+        left: 1230.66px;
+        top: 635.166px; /* 조정 가능한 값 */
+        background: #004938;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+        z-index: 2; /* 다른 요소보다 위에 나타나도록 설정 */
+        font-family: "Black Han Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 45px;
+        line-height: 76px;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      #logo {
+        position: absolute;
+        width: 283.33px;
+        height: 486.66px;
+        left: 120px;
+        top: 515.833px;
+
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      }
+    </style>
+    <div id="container">
+      <div>
+        <input id="subbox" placeholder="분리수거 방법 검색" />
+        <div id="subicon">
+          <img src="../../images/search.svg" />
+        </div>
+      </div>
+      <div id="title">결과 확인</div>
+      <div id="whitebox">
+        <div id="score">결과</div>
+        <div id="point">70점</div>
+        <div id="text">
+          (이름)!
+          <br />
+          같이 지구를
+          <br />
+          구해줘서 고마워!
+        </div>
+        <button type="button" id="next" onclick="navigateToNextPage()">다시하기</button>
+      </div>
+      <div id="resultbox">
+        <div id="quiztext">
+          1. 콜라 캔
+          <br />
+          2. 택배 박스
+          <br />
+          3. 라면 봉지
+        </div>
+        <div id="answertext">
+          캔/병
+          <br />
+          종이
+          <br />
+          비닐
+        </div>
+      </div>
+      <div id="logo">
+        <img src="../../images/logo_pass.png" style="width: 100%; height: 100%;"/>
+      </div>
+    </div>
+  </body>
+</html>
