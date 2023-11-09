@@ -96,13 +96,13 @@
         document.querySelector("#wrong_next_btn").addEventListener("click", navigateToNextPage_Wrong);
 
         function navigateToNextPage_Correct() {
-            var is_answer = "true";
-            window.location.href = "problem2.html?name=" + name + "&trash1=" + encodeURIComponent(is_answer);
+            var p_answer = "true";
+            window.location.href = "problem2.html?name=" + name + "&trash1=" + encodeURIComponent(p_answer);
         }
 
         function navigateToNextPage_Wrong() {
-            var is_answer = "false";
-            window.location.href = "problem2.html?name=" + name + "&trash1=" + encodeURIComponent(is_answer);
+            var p_answer = "false";
+            window.location.href = "problem2.html?name=" + name + "&trash1=" + encodeURIComponent(p_answer);
         }
     </script>
 </body>

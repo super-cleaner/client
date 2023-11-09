@@ -67,37 +67,49 @@
       }
 
       #quiztext {
-        position: absolute;
-        width: 299px;
-        height: 650px;
-        left: 154px;
-        top: 52px;
+      position: absolute;
+      width: 700px;
+      height: 541.66px;
+      left: 50px;
+      top: 37.5px;
+      overflow: scroll;
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 100;
-        font-size: 50px;
-        line-height: 80px;
-        /* or 217% */
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 100;
+      font-size: 50px;
+      line-height: 80px;
+      text-align: left;
+      /* or 217% */
 
-        color: #000000;
-      }
+      color: #000000;
 
-      #answertext {
-        position: absolute;
-        width: 299px;
-        height: 650px;
-        left: 534px;
-        bottom: 597px;
+    }
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 100;
-        font-size: 50px;
-        line-height: 80px;
+    #quiztext::-webkit-scrollbar {
+      width: 7px;
+    }
 
-        color: #000000;
-      }
+    #quiztext::-webkit-scrollbar-track {
+      background-color: none;
+    }
+
+    #quiztext::-webkit-scrollbar-thumb {
+      background: #aaa;
+      border-radius: 10px;
+    }
+
+    #quiztext::-webkit-scrollbar-thumb:hover {
+      background: #404040;
+    }
+
+    #quiztext::-webkit-scrollbar-thumb:active {
+      background: #808080;
+    }
+
+    #quiztext::-webkit-scrollbar-button {
+      display: none;
+    }
 
       #subbox {
         position: absolute;
@@ -257,6 +269,18 @@
 
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
       }
+
+      h4 {
+      background-color: #000000;
+      width: 680px;
+      height: 5px;
+      margin: 0;
+      margin-bottom: 10px;
+      position: relative;
+      left: -100px;
+      top: -15px;
+
+    }
     </style>
     <div id="container">
       <div>
@@ -279,24 +303,115 @@
         <button type="button" id="next" onclick="navigateToNextPage()">다시하기</button>
       </div>
       <div id="resultbox">
-        <div id="quiztext">
-          1. 콜라 캔
-          <br />
-          2. 택배 박스
-          <br />
-          3. 라면 봉지
-        </div>
-        <div id="answertext">
-          캔/병
-          <br />
-          종이
-          <br />
-          비닐
-        </div>
+        <form style="width: 100%; height: 100%;">
+          <div id="quiztext">
+            <ol style="position: relative; left: 50px; width: 250px; margin:0;">
+              <li>콜라 캔</li>
+              <h4></h4>
+              <li>택배 박스</li>
+              <h4></h4>
+              <li>라면 봉지</li>
+              <h4></h4>
+              <li>박카스 병</li>
+              <h4></h4>
+              <li>닭뼈</li>
+              <h4></h4>
+              <li>귤 껍질</li>
+              <h4></h4>
+              <li>가방</li>
+              <h4></h4>
+              <li>페트병</li>
+              <h4></h4>
+              <li>배달용기</li>
+              <h4></h4>
+              <li>스파게티</li>
+              <h4></h4>
+            </ol>
+            <ul style="position: absolute; top: 0px; left: 380px; width: 250px; margin:0; list-style-type: none;">
+              <li>캔/병</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>종이</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>비닐</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>캔/병</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>일반쓰레기</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>일반쓰레기</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>일반쓰레기</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>플라스틱</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>플라스틱</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+              <li>음식물</li>
+              <h4 style="visibility: hidden; width:10px;"></h4>
+            </ul>
+          </div>
+        </form>
       </div>
       <div id="logo">
         <img src="../../images/logo_fail.png" style="width: 100%; height: 100%;"/>
       </div>
     </div>
+    <script>
+      var urlParams;
+      var name;
+      var trash1;
+      var trash2;
+      var trash3;
+      var trash4;
+      var trash5;
+      var trash6;
+      var trash7;
+      var trash8;
+      var trash9;
+      var trash10;
+      var player_score = 0;
+      var tname;
+      var welements;
+  
+      window.onload = function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        name = urlParams.get("name");
+        trash1 = urlParams.get("trash1");
+        trash2 = urlParams.get("trash2");
+        trash3 = urlParams.get("trash3");
+        trash4 = urlParams.get("trash4");
+        trash5 = urlParams.get("trash5");
+        trash6 = urlParams.get("trash6");
+        trash7 = urlParams.get("trash7");
+        trash8 = urlParams.get("trash8");
+        trash9 = urlParams.get("trash9");
+        trash10 = urlParams.get("trash10");
+  
+        document.getElementById("text").innerHTML =
+          name + "!<br />같이 지구를<br />구해줘서 고마워!";
+  
+        var player_answer = [trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9, trash10];
+  
+        for(var i = 0; i < 10; i++){
+          if(player_answer[i] == "true"){
+            player_score += 10;
+          } else {
+          tname = "trash" + (i + 1);
+          welements = document.getElementsByClassName(tname);
+          for (var j = 0; j < welements.length; j++) {
+            welements[j].style.color = "red";
+          }
+        }
+        }
+  
+        document.getElementById("point").innerHTML =
+          player_score + "점";
+  
+      };
+  
+      function navigateToNextPage() {
+        window.location.href = "../../index.html";
+      }
+    </script>
   </body>
 </html>

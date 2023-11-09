@@ -13,7 +13,7 @@
     <div class="background1" id="container">
         <img src="../../images/background.png" class="backgroundimage">
         <div class="process_box">
-            <p class="process_text">진행상황<br>1 / 10개</p>
+            <p class="process_text">진행상황<br>4 / 10개</p>
         </div>
         <div class="screen">
             <div class="recycle_container">
@@ -102,13 +102,13 @@
         document.querySelector("#wrong_next_btn").addEventListener("click", navigateToNextPage_Wrong);
 
         function navigateToNextPage_Correct() {
-            var is_answer = "true";
-            window.location.href = "problem5.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(is_answer);
+            var p_answer = "true";
+            window.location.href = "problem5.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(p_answer);
         }
 
         function navigateToNextPage_Wrong() {
-            var is_answer = "false";
-            window.location.href = "problem5.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(is_answer);
+            var p_answer = "false";
+            window.location.href = "problem5.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(p_answer);
         }
     </script>
 </body>
