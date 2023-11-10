@@ -151,7 +151,10 @@
       if (name.trim() !== "") {
         $.ajax({
           url: 'https://api.super-cleaner.kro.kr/game/',
-          type: 'GET',
+          type: 'POST',
+          data: {
+                "player_name" : name,
+            },
           dataType: 'json',
           success: function (data, textStatus, xhr) {
             console.log(data);
