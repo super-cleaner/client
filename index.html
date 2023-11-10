@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap"
@@ -120,6 +121,19 @@
       </div>
     </div>
     <script>
+      window.onload = function () {
+      $.ajax({
+        url: 'https://api.super-cleaner.kro.kr',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data, textStatus, xhr) {
+          console.log(data);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+          console.log('Error in Operation');
+        }
+      });
+    }
       function navigateToNextPage() {
         window.location.href = "game/gamestart/name.html";
       }
