@@ -128,8 +128,13 @@
         dataType: 'json',
         success: function (data, textStatus, xhr) {
           console.log(data);
+          console.log(textStatus);
+          console.log(xhr);
         },
         error: function (xhr, textStatus, errorThrown) {
+          console.log(xhr);
+          console.log(textStatus);
+          console.log(errorThrown);
           console.log('Error in Operation');
         }
       });
