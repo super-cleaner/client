@@ -181,7 +181,8 @@
             console.log(sort_trashid_array);
             console.log(sort_trashnum_array);
             for (var p = 0; p < 10; p++) {
-              trashobj.sort_trashnum_array[p] = sort_trashid_array[p];
+              var sp = p + "";
+              trashobj.sort_trashnum_array[sp] = sort_trashid_array[sp];
             }
             newtrashobj = Object.keys(trashobj).sort().reduce(
               (newObj, key) => {
@@ -192,9 +193,10 @@
             );
             var key1 = Object.keys(newtrashobj);
             for(var o = 0; o < 10; o++){
+              var so = o + "";
               newtrashid_array.push(key1[o]);
               newtrashvalue_array.push(newtrashobj[key1[o]]);
-              console.log(newtrashvalue_array[o]);
+              console.log(newtrashvalue_array[so]);
             }
             sessionStorage.setItem("trash1", newtrashvalue_array[0]);
             sessionStorage.setItem("trash2", newtrashvalue_array[1]);
