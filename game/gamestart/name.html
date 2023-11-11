@@ -173,9 +173,9 @@
             trashid_array = data.random_list;
             console.log(trashid_array);
             for (var l = 0; l < 10; l++) {
-              var key = Object.keys(trashid_array[l])[0];
+              var key = Object.keys(trashid_array)[l];
               sort_trashid_array.push(key);
-              sort_trashnum_array.push(trashid_array[l][key]);
+              sort_trashnum_array.push(trashid_array[key]);
             }
             for (var p = 0; p < 10; p++) {
               trashobj.sort_trashnum_array[p] = sort_trashid_array[p];
