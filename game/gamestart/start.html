@@ -111,16 +111,13 @@
     var name;
 
     window.onload = function () {
-      var urlParams = new URLSearchParams(window.location.search);
-      name = urlParams.get("name");
+      name = sessionStorage.getItem("player_name");
 
-      document.getElementById("text").innerHTML =
-        name +
-        "!<br />지구에 떠다니는 쓰레기를<br />마우스로 움직여서<br />올바른 쓰레기통에 넣어주면 돼!";
+      document.getElementById("text").innerHTML = name + "!<br />지구에 떠다니는 쓰레기를<br />마우스로 움직여서<br />올바른 쓰레기통에 넣어주면 돼!";
     };
 
     function navigateToNextPage() {
-      window.location.href = "../gamescreen/problem1.html?name=" + encodeURIComponent(name);
+      window.location.href = "../gamescreen/problem1.html";
     }
   </script>
   <div id="container">

@@ -9,8 +9,32 @@
 </head>
 
 <body style="display:flex; flex-direction: row;">
-    <!-- <div style="width:143.5px; height:900px;"></div> -->
-    <div class="background1" id="container">
+    <script>
+        var gid = sessionStorage.getItem("game_id");
+        var t1 = sessionStorage.getItem("trash1");
+
+        window.onload = function () {
+            $.ajax({
+                url: 'https://api.super-cleaner.kro.kr/record/',
+                type: 'POST',
+                data: {
+                    "game_id": gid,
+                    "trash_id": t1
+                },
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    console.log(data);
+                    sessionStorage.setItem("trash_name", data.trash.trash_name);
+                    sessionStorage.setItem("image_url", data.trash.image_url);
+
+                    document.getElementById("item").src = sessionStorage.getItem("image_url");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+    </script>    <div class="background1" id="container">
         <img src="../../images/background.png" class="backgroundimage">
         <div class="process_box">
             <p class="process_text">진행상황<br>7 / 10개</p>
@@ -85,36 +109,15 @@
     </div>
     <script type="text/javascript" src="./script.js"></script>
     <script>
-        var urlParams;
-        var name;
-        var trash1;
-        var trash2;
-        var trash3;
-        var trash4;
-        var trash5;
-        var trash6;
-
-        window.onload = function () {
-            urlParams = new URLSearchParams(window.location.search);
-            name = urlParams.get("name");
-            trash1 = urlParams.get("trash1");
-            trash2 = urlParams.get("trash2");
-            trash3 = urlParams.get("trash3");
-            trash4 = urlParams.get("trash4");
-            trash5 = urlParams.get("trash5");
-            trash6 = urlParams.get("trash6");
-        }
         document.querySelector("#correct_next_btn").addEventListener("click", navigateToNextPage_Correct);
         document.querySelector("#wrong_next_btn").addEventListener("click", navigateToNextPage_Wrong);
 
         function navigateToNextPage_Correct() {
-            var p_answer = "true";
-            window.location.href = "problem8.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(trash4) + "&trash5=" + encodeURIComponent(trash5) + "&trash6=" + encodeURIComponent(trash6) + "&trash7=" + encodeURIComponent(p_answer);
+            window.location.href = "problem8.html";
         }
 
         function navigateToNextPage_Wrong() {
-            var p_answer = "false";
-            window.location.href = "problem8.html?name=" + encodeURIComponent(name) + "&trash1=" + encodeURIComponent(trash1) + "&trash2=" + encodeURIComponent(trash2) + "&trash3=" + encodeURIComponent(trash3) + "&trash4=" + encodeURIComponent(trash4) + "&trash5=" + encodeURIComponent(trash5) + "&trash6=" + encodeURIComponent(trash6) + "&trash7=" + encodeURIComponent(p_answer);
+            window.location.href = "problem8.html";
         }
     </script>
 </body>

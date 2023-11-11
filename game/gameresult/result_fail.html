@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <style>
-      body,
-      html {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        z-index: -2;
-        -ms-overflow-style: none; /* 인터넷 익스플로러 */
-        scrollbar-width: none; /* 파이어폭스 */
-      }
 
-      body::-webkit-scrollbar {
-        display: none;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap"
+    rel="stylesheet" />
+</head>
 
-      #container {
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        width: 1600px;
-        height: 900px;
-        overflow: hidden;
-        touch-action: none;
-        margin: auto;
-        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 12.92%, rgba(255, 255, 255, 0.22) 36.88%, rgba(255, 255, 255, 0.16) 55.11%, rgba(255, 255, 255, 0.16) 73.96%, rgba(0, 0, 0, 0.40) 88.54%), url("../../images/background.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
+<body>
+  <style>
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: -2;
+      -ms-overflow-style: none;
+      /* 인터넷 익스플로러 */
+      scrollbar-width: none;
+      /* 파이어폭스 */
+    }
 
-      #whitebox {
-        position: absolute;
-    top: 139px;
-    margin-left: 105px;
-    margin-right: 70px;
-    width: 1425px;
-    height: 691px;
-    flex-shrink: 0;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.50);
-    touch-action: none;
-      }
+    body::-webkit-scrollbar {
+      display: none;
+    }
 
-      #resultbox {
-        box-sizing: border-box;
+    #container {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      touch-action: none;
+      margin: auto;
+      background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 12.92%, rgba(255, 255, 255, 0.22) 36.88%, rgba(255, 255, 255, 0.16) 55.11%, rgba(255, 255, 255, 0.16) 73.96%, rgba(0, 0, 0, 0.40) 88.54%), url("../../images/background.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
-        position: absolute;
-        width: 777.5px;
-        height: 601.66px;
-        right: 130px;
-        top: 200.83px;
+    #whitebox {
+      position: absolute;
+      top: 139px;
+      margin-left: 105px;
+      margin-right: 70px;
+      width: 1425px;
+      height: 691px;
+      flex-shrink: 0;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.50);
+      touch-action: none;
+    }
 
-        background: rgba(255, 255, 255, 0.78);
-        border: 1px solid #000000;
-        border-radius: 30px;
-      }
+    #resultbox {
+      box-sizing: border-box;
 
-      #quiztext {
+      position: absolute;
+      width: 777.5px;
+      height: 601.66px;
+      right: 130px;
+      top: 200.83px;
+
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid #000000;
+      border-radius: 30px;
+    }
+
+    #quiztext {
       position: absolute;
       width: 700px;
       height: 541.66px;
@@ -111,166 +113,170 @@
       display: none;
     }
 
-      #subbox {
-        position: absolute;
-        width: 313px;
-        height: 74px;
-        top: 39.166px; 
-        left: 54px;
-        border: 3px solid #ffffff;
-        border-radius: 25px;
+    #subbox {
+      position: absolute;
+      width: 313px;
+      height: 74px;
+      top: 39.166px;
+      left: 54px;
+      border: 3px solid #ffffff;
+      border-radius: 25px;
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 10;
-        font-size: 25px;
-        line-height: 50px;
-        text-align: center;
-        background-color: transparent;
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 10;
+      font-size: 25px;
+      line-height: 50px;
+      text-align: center;
+      background-color: transparent;
 
-        color: #ffffff;
-      }
+      color: #ffffff;
+    }
 
-      #subicon {
-        position: absolute;
-        width: 45px;
-        height: 45px;
-        /* 좌표 값 조정 */
-        top: 56px;
-        left: 70px;
-      }
-      #subicon img {
-        width: 100%;
-        height: 100%;
-        display: block; /* 이미지를 블록 요소로 설정 */
-        z-index: 1;
-      }
+    #subicon {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      /* 좌표 값 조정 */
+      top: 56px;
+      left: 70px;
+    }
 
-      #subtext {
-        position: absolute;
-        width: 313px;
-        height: 74px;
-        right: 56px;
-        bottom: 65px;
-        margin: 20px 0 0 54px;
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 25px;
-        line-height: 32px;
-        text-align: center;
-        background-color: transparent;
-        border-radius: 25px;
-        border: none;
-        color: #ffffff;
-      }
+    #subicon img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      /* 이미지를 블록 요소로 설정 */
+      z-index: 1;
+    }
 
-      #title {
-        position: absolute;
-        width: 677.5px;
-        height: 100px;
-        left: 470px;
-        top: 70px;
-        justify-content: center;
-        text-align: center;
+    #subtext {
+      position: absolute;
+      width: 313px;
+      height: 74px;
+      right: 56px;
+      bottom: 65px;
+      margin: 20px 0 0 54px;
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 32px;
+      text-align: center;
+      background-color: transparent;
+      border-radius: 25px;
+      border: none;
+      color: #ffffff;
+    }
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 95px;
-        line-height: 165px;
-        z-index: 4;
+    #title {
+      position: absolute;
+      width: 677.5px;
+      height: 100px;
+      left: 470px;
+      top: 70px;
+      justify-content: center;
+      text-align: center;
 
-        /* identical to box height */
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 95px;
+      line-height: 165px;
+      z-index: 4;
 
-        color: #000000;
-        -webkit-text-stroke: 2px white;
-      }
+      /* identical to box height */
 
-      #text {
-        /* 지구가 쓰레기 더미에 뒤덮였어 ! 나랑 같이 지구를 지키러갈래? */
+      color: #000000;
+      -webkit-text-stroke: 2px white;
+    }
 
-        position: absolute;
-        width: 1500px;
-        height: 190px;
-        right: 250px;
-        top: 317.5px;
-        margin: 0 auto;
+    #text {
+      /* 지구가 쓰레기 더미에 뒤덮였어 ! 나랑 같이 지구를 지키러갈래? */
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 10;
-        font-size: 30px;
-        line-height: 50px;
-        text-align: center;
+      position: absolute;
+      width: 1500px;
+      height: 190px;
+      right: 250px;
+      top: 317.5px;
+      margin: 0 auto;
 
-        color: #000000;
-      }
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 10;
+      font-size: 30px;
+      line-height: 50px;
+      text-align: center;
 
-      #score {
-        position: absolute;
-        width: 181px;
-        height: 61px;
-        left: 66.66px;
-        top: 160px;
+      color: #000000;
+    }
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 40px;
-        line-height: 51px;
-        text-align: center;
+    #score {
+      position: absolute;
+      width: 181px;
+      height: 61px;
+      left: 66.66px;
+      top: 160px;
 
-        color: #000000;
-      }
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 51px;
+      text-align: center;
 
-      #point {
-        position: absolute;
-        width: 300px;
-        height: 145px;
-        left: 180.833px;
-        top: 98.33px;
+      color: #000000;
+    }
 
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 300;
-        font-size: 130px;
-        line-height: 127px;
-        text-align: center;
+    #point {
+      position: absolute;
+      width: 300px;
+      height: 145px;
+      left: 180.833px;
+      top: 98.33px;
 
-        color: #0029ff;
-      }
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 300;
+      font-size: 130px;
+      line-height: 127px;
+      text-align: center;
 
-      #next {
-        position: absolute;
-        width: 219.166px;
-        height: 80.833px;
-        left: 1230.66px;
-        top: 635.166px; /* 조정 가능한 값 */
-        background: #004938;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 50px;
-        z-index: 2; /* 다른 요소보다 위에 나타나도록 설정 */
-        font-family: "Black Han Sans";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 45px;
-        line-height: 76px;
-        text-align: center;
-        color: #ffffff;
-      }
+      color: #0029ff;
+    }
 
-      #logo {
-        position: absolute;
-        width: 283.33px;
-        height: 486.66px;
-        left: 120px;
-        top: 515.833px;
+    #next {
+      position: absolute;
+      width: 219.166px;
+      height: 80.833px;
+      left: 1230.66px;
+      top: 635.166px;
+      /* 조정 가능한 값 */
+      background: #004938;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 50px;
+      z-index: 2;
+      /* 다른 요소보다 위에 나타나도록 설정 */
+      font-family: "Black Han Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 45px;
+      line-height: 76px;
+      text-align: center;
+      color: #ffffff;
+    }
 
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-      }
+    #logo {
+      position: absolute;
+      width: 283.33px;
+      height: 486.66px;
+      left: 120px;
+      top: 515.833px;
 
-      h4 {
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    h4 {
       background-color: #000000;
       width: 680px;
       height: 5px;
@@ -281,137 +287,157 @@
       top: -15px;
 
     }
-    </style>
-    <div id="container">
-      <div>
-        <input id="subbox" placeholder="분리수거 방법 검색" />
-        <div id="subicon">
-          <img src="../../images/search.svg" />
-        </div>
-      </div>
-      <div id="title">결과 확인</div>
-      <div id="whitebox">
-        <div id="score">결과</div>
-        <div id="point">30점</div>
-        <div id="text">
-          (이름)!
-          <br />
-          아직 지구를
-          <br />
-          구하기에는 부족해...
-        </div>
-        <button type="button" id="next" onclick="navigateToNextPage()">다시하기</button>
-      </div>
-      <div id="resultbox">
-        <form style="width: 100%; height: 100%;">
-          <div id="quiztext">
-            <ol style="position: relative; left: 50px; width: 250px; margin:0;">
-              <li>콜라 캔</li>
-              <h4></h4>
-              <li>택배 박스</li>
-              <h4></h4>
-              <li>라면 봉지</li>
-              <h4></h4>
-              <li>박카스 병</li>
-              <h4></h4>
-              <li>닭뼈</li>
-              <h4></h4>
-              <li>귤 껍질</li>
-              <h4></h4>
-              <li>가방</li>
-              <h4></h4>
-              <li>페트병</li>
-              <h4></h4>
-              <li>배달용기</li>
-              <h4></h4>
-              <li>스파게티</li>
-              <h4></h4>
-            </ol>
-            <ul style="position: absolute; top: 0px; left: 380px; width: 250px; margin:0; list-style-type: none;">
-              <li>캔/병</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>종이</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>비닐</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>캔/병</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>일반쓰레기</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>일반쓰레기</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>일반쓰레기</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>플라스틱</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>플라스틱</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-              <li>음식물</li>
-              <h4 style="visibility: hidden; width:10px;"></h4>
-            </ul>
-          </div>
-        </form>
-      </div>
-      <div id="logo">
-        <img src="../../images/logo_fail.png" style="width: 100%; height: 100%;"/>
+  </style>
+  <div id="container">
+    <div>
+      <input id="subbox" placeholder="분리수거 방법 검색" />
+      <div id="subicon">
+        <img src="../../images/search.svg" />
       </div>
     </div>
-    <script>
-      var urlParams;
-      var name;
-      var trash1;
-      var trash2;
-      var trash3;
-      var trash4;
-      var trash5;
-      var trash6;
-      var trash7;
-      var trash8;
-      var trash9;
-      var trash10;
-      var player_score = 0;
-      var tname;
-      var welements;
-  
-      window.onload = function () {
-        var urlParams = new URLSearchParams(window.location.search);
-        name = urlParams.get("name");
-        trash1 = urlParams.get("trash1");
-        trash2 = urlParams.get("trash2");
-        trash3 = urlParams.get("trash3");
-        trash4 = urlParams.get("trash4");
-        trash5 = urlParams.get("trash5");
-        trash6 = urlParams.get("trash6");
-        trash7 = urlParams.get("trash7");
-        trash8 = urlParams.get("trash8");
-        trash9 = urlParams.get("trash9");
-        trash10 = urlParams.get("trash10");
-  
-        document.getElementById("text").innerHTML =
-          name + "!<br />같이 지구를<br />구해줘서 고마워!";
-  
-        var player_answer = [trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9, trash10];
-  
-        for(var i = 0; i < 10; i++){
-          if(player_answer[i] == "true"){
-            player_score += 10;
-          } else {
+    <div id="title">결과 확인</div>
+    <div id="whitebox">
+      <div id="score">결과</div>
+      <div id="point"></div>
+      <div id="text">
+      </div>
+      <button type="button" id="next" onclick="navigateToNextPage()">다시하기</button>
+    </div>
+    <div id="resultbox">
+      <form style="width: 100%; height: 100%;">
+        <div id="quiztext">
+          <ol style="position: relative; left: 50px; width: 250px; margin:0;">
+            <li class="trash1" id="trash1_name"></li>
+            <h4></h4>
+            <li class="trash2" id="trash2_name"></li>
+            <h4></h4>
+            <li class="trash3" id="trash3_name"></li>
+            <h4></h4>
+            <li class="trash4" id="trash4_name"></li>
+            <h4></h4>
+            <li class="trash5" id="trash5_name"></li>
+            <h4></h4>
+            <li class="trash6" id="trash6_name"></li>
+            <h4></h4>
+            <li class="trash7" id="trash7_name"></li>
+            <h4></h4>
+            <li class="trash8" id="trash8_name"></li>
+            <h4></h4>
+            <li class="trash9" id="trash9_name"></li>
+            <h4></h4>
+            <li class="trash10" id="trash10_name"></li>
+            <h4></h4>
+          </ol>
+          <ul style="position: absolute; top: 0px; left: 380px; width: 250px; margin:0; list-style-type: none;">
+            <li class="trash1" id="trash1_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash2" id="trash2_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash3" id="trash3_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash4" id="trash4_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash5" id="trash5_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash6" id="trash6_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash7" id="trash7_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash8" id="trash8_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash9" id="trash9_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+            <li class="trash10" id="trash10_category"></li>
+            <h4 style="visibility: hidden; width:10px;"></h4>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <div id="logo">
+      <img src="../../images/logo_fail.png" style="width: 100%; height: 100%;" />
+    </div>
+  </div>
+  <script>
+    var urlParams;
+    var name;
+    var trash1;
+    var trash2;
+    var trash3;
+    var trash4;
+    var trash5;
+    var trash6;
+    var trash7;
+    var trash8;
+    var trash9;
+    var trash10;
+    var player_score;
+    var tname;
+    var welements;
+
+    window.onload = function () {
+      name = sessionStorage.getItem("player_name");
+      player_score = sessionStorage.getItem("score");
+
+      var player_answer_list = sessionStorage.getItem("result_list");
+
+      trash1 = player_answer_list.trash1.is_answer;
+      trash2 = player_answer_list.trash2.is_answer;
+      trash3 = player_answer_list.trash3.is_answer;
+      trash4 = player_answer_list.trash4.is_answer;
+      trash5 = player_answer_list.trash5.is_answer;
+      trash6 = player_answer_list.trash6.is_answer;
+      trash7 = player_answer_list.trash7.is_answer;
+      trash8 = player_answer_list.trash8.is_answer;
+      trash9 = player_answer_list.trash9.is_answer;
+      trash10 = player_answer_list.trash10.is_answer;
+
+      document.getElementById("text").innerHTML = name + "!<br />아직 지구를<br />구하기에는 부족해...";
+
+      var player_answer = [trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9, trash10];
+
+      document.getElementById("trash1_name").innerHTML = player_answer_list.trash1.trash_name;
+      document.getElementById("trash2_name").innerHTML = player_answer_list.trash2.trash_name;
+      document.getElementById("trash3_name").innerHTML = player_answer_list.trash3.trash_name;
+      document.getElementById("trash4_name").innerHTML = player_answer_list.trash4.trash_name;
+      document.getElementById("trash5_name").innerHTML = player_answer_list.trash5.trash_name;
+      document.getElementById("trash6_name").innerHTML = player_answer_list.trash6.trash_name;
+      document.getElementById("trash7_name").innerHTML = player_answer_list.trash7.trash_name;
+      document.getElementById("trash8_name").innerHTML = player_answer_list.trash8.trash_name;
+      document.getElementById("trash9_name").innerHTML = player_answer_list.trash9.trash_name;
+      document.getElementById("trash10_name").innerHTML = player_answer_list.trash10.trash_name;
+
+      document.getElementById("trash1_category").innerHTML = player_answer_list.trash1.trash_category_name;
+      document.getElementById("trash2_category").innerHTML = player_answer_list.trash2.trash_category_name;
+      document.getElementById("trash3_category").innerHTML = player_answer_list.trash3.trash_category_name;
+      document.getElementById("trash4_category").innerHTML = player_answer_list.trash4.trash_category_name;
+      document.getElementById("trash5_category").innerHTML = player_answer_list.trash5.trash_category_name;
+      document.getElementById("trash6_category").innerHTML = player_answer_list.trash6.trash_category_name;
+      document.getElementById("trash7_category").innerHTML = player_answer_list.trash7.trash_category_name;
+      document.getElementById("trash8_category").innerHTML = player_answer_list.trash8.trash_category_name;
+      document.getElementById("trash9_category").innerHTML = player_answer_list.trash9.trash_category_name;
+      document.getElementById("trash10_category").innerHTML = player_answer_list.trash10.trash_category_name;
+
+      for (var i = 0; i < 10; i++) {
+        if (player_answer[i] == "true") {
+          player_score += 10;
+        } else {
           tname = "trash" + (i + 1);
           welements = document.getElementsByClassName(tname);
           for (var j = 0; j < welements.length; j++) {
             welements[j].style.color = "red";
           }
         }
-        }
-  
-        document.getElementById("point").innerHTML =
-          player_score + "점";
-  
-      };
-  
-      function navigateToNextPage() {
-        window.location.href = "../../index.html";
       }
-    </script>
-  </body>
+
+      document.getElementById("point").innerHTML =
+        player_score + "점";
+
+    };
+
+    function navigateToNextPage() {
+      window.location.href = "../../index.html";
+    }
+  </script>
+</body>
+
 </html>

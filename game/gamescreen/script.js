@@ -49,36 +49,96 @@ item.onmousedown = function (event) {
         document.removeEventListener('mousemove', onMouseMove);
 
         var gid = sessionStorage.getItem("game_id");
-        var t1 = sessionStorage.getItem("trash1");
+
+
+
+        var pagenum;
+        var urlParams = new URLSearchParams(window.location.search);
+        pagenum = urlParams.get("pagenum");
+        var t1;
+        if (pagenum == 1) {
+            t1 = sessionStorage.getItem("trash1");
+        } else if (pagenum == 2) {
+            t1 = sessionStorage.getItem("trash2");
+        } else if (pagenum == 3) {
+            t1 = sessionStorage.getItem("trash3");
+        } else if (pagenum == 4) {
+            t1 = sessionStorage.getItem("trash4");
+        } else if (pagenum == 5) {
+            t1 = sessionStorage.getItem("trash5");
+        } else if (pagenum == 6) {
+            t1 = sessionStorage.getItem("trash6");
+        } else if (pagenum == 7) {
+            t1 = sessionStorage.getItem("trash7");
+        } else if (pagenum == 8) {
+            t1 = sessionStorage.getItem("trash8");
+        } else if (pagenum == 9) {
+            t1 = sessionStorage.getItem("trash9");
+        } else if (pagenum == 10) {
+            t1 = sessionStorage.getItem("trash10");
+            var url10 = 'https://api.super-cleaner.kro.kr/record/result/' + gid;
+            $.ajax({
+                url: url10,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    console.log(data);
+                    sessionStorage.setItem("score", data.score);
+                    sessionStorage.setItem("description", data.description);
+                    sessionStorage.setItem("result_list", data.result_list);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+        let player_trash_category_id;
+
+
+
+        if (currentDroppable.id == "paper_img") {
+            player_trash_category_id = 1;
+        } else if (currentDroppable.id == "canbottle_img") {
+            player_trash_category_id = 2;
+        } else if (currentDroppable.id == "plastic_img") {
+            player_trash_category_id = 3;
+        } else if (currentDroppable.id == "general_img") {
+            player_trash_category_id = 4;
+        } else if (currentDroppable.id == "food_img") {
+            player_trash_category_id = 5;
+        } else if (currentDroppable.id == "bag_img") {
+            player_trash_category_id = 6;
+        }
+
+
         $.ajax({
             url: 'https://api.super-cleaner.kro.kr/record/check',
             type: 'POST',
             data: {
-              "game_id": gid,
-              "trash_id": t1
+                "game_id": gid,
+                "trash_id": t1,
+                "player_trash_category_id": player_trash_category_id
             },
             dataType: 'json',
             success: function (data, textStatus, xhr) {
-              console.log(data);
-              sessionStorage.setItem("trash_name", data.trash.trash_name);
-              sessionStorage.setItem("image_url", data.trash.image_url);
-  
-              document.getElementById("item").src = sessionStorage.getItem("image_url");
-  
-              // 정말 잘했어 !<br>콜라 캔은 캔에 버리면 돼
-              // 콜라 캔은 캔에 버려야 해 !<br>이제 알겠지?
-              document.getElementById("correct_answer_text").innerHTML = "정말 잘했어 !<br>" + sessionStorage.getItem("trash_name") + "은/는 " + sessionStorage.getItem("trash_category_name") + "에 버리면 돼";
-              document.getElementById("wrong_answer_text").innerHTML = sessionStorage.getItem("trash_name") + "은 " + sessionStorage.getItem("trash_category_name") +"에 버려야 해 !<br>이제 알겠지?";
-          },
+                console.log(data);
+                sessionStorage.setItem("trash_category_name", data.trash.trash_category_name);
+                sessionStorage.setItem("is_answer", data.trash.is_answer);
+
+                // 정말 잘했어 !<br>콜라 캔은 캔에 버리면 돼
+                // 콜라 캔은 캔에 버려야 해 !<br>이제 알겠지?
+                document.getElementById("correct_answer_text").innerHTML = "정말 잘했어 !<br>" + sessionStorage.getItem("trash_name") + "은/는 " + sessionStorage.getItem("trash_category_name") + "에 버리면 돼";
+                document.getElementById("wrong_answer_text").innerHTML = sessionStorage.getItem("trash_name") + "은 " + sessionStorage.getItem("trash_category_name") + "에 버려야 해 !<br>이제 알겠지?";
+            },
             error: function (xhr, textStatus, errorThrown) {
-              console.log('Error in Operation');
+                console.log('Error in Operation');
             }
-          });
-  
+        });
 
 
 
-        if (currentDroppable.id == "canbottle_img") {
+
+        if (sessionStorage.getItem("is_answer") == true) {
             answer_shade.style.height = "100%";
             answer_shade.style.display = "flex";
             correct_answer_box.style.height = "451.66px";
