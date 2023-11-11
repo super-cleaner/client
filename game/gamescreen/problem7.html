@@ -117,15 +117,17 @@
     </script>
     <script type="text/javascript" src="./script.js"></script>
     <script>
+        var pagenum = 8;
+
         document.querySelector("#correct_next_btn").addEventListener("click", navigateToNextPage_Correct);
         document.querySelector("#wrong_next_btn").addEventListener("click", navigateToNextPage_Wrong);
 
         function navigateToNextPage_Correct() {
-            window.location.href = "problem8.html";
+            window.location.href = "problem8.html?pagenum=" + encodeURIComponent(pagenum);
         }
 
         function navigateToNextPage_Wrong() {
-            window.location.href = "problem8.html";
+            window.location.href = "problem8.html?pagenum=" + encodeURIComponent(pagenum);
         }
     </script>
 </body>

@@ -118,6 +118,7 @@
   </div>
   <script>
     var name;
+    var pagenum = 1;
 
     window.onload = function () {
       name = sessionStorage.getItem("player_name");
@@ -126,7 +127,7 @@
     };
 
     function navigateToNextPage() {
-      window.location.href = "../gamescreen/problem1.html";
+      window.location.href = "../gamescreen/problem1.html?pagenum=" + encodeURIComponent(pagenum);
     }
   </script>
 </body>
