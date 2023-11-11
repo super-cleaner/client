@@ -181,8 +181,9 @@
             console.log(sort_trashid_array);
             console.log(sort_trashnum_array);
             for (var p = 0; p < 10; p++) {
-              var sp = p + "";
-              trashobj.sort_trashnum_array[sp] = sort_trashid_array[sp];
+              var sp1 = sort_trashid_array[p];
+              var sp2 = sort_trashnum_array[p];
+              Object.assign(trashobj, { sp2 : sp1 });
             }
             newtrashobj = Object.keys(trashobj).sort().reduce(
               (newObj, key) => {
