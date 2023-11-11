@@ -210,6 +210,16 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1002;
+    background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 12.92%,
+    rgba(255, 255, 255, 0.22) 36.88%,
+    rgba(255, 255, 255, 0.16) 55.11%,
+    rgba(255, 255, 255, 0.16) 73.96%,
+    rgba(0, 0, 0, 0.4) 88.54%
+  ),
+  url("../../images/background_pass.png");
+background-size: 100% 100%;
 }
 
 .answer_img {
@@ -268,4 +278,14 @@ margin-bottom: 30px;
     align-items: center;
     justify-content: center;
     z-index: 1002;
+    background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 12.92%,
+    rgba(255, 255, 255, 0.22) 36.88%,
+    rgba(255, 255, 255, 0.16) 55.11%,
+    rgba(255, 255, 255, 0.16) 73.96%,
+    rgba(0, 0, 0, 0.4) 88.54%
+  ),
+  url("../../images/background.png");
+background-size: 100% 100%;
 }
