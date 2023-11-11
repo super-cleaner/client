@@ -49,13 +49,13 @@ item.onmousedown = function (event) {
         document.removeEventListener('mousemove', onMouseMove);
 
         var gid = sessionStorage.getItem("game_id");
-
+        var t1;
 
 
         var pagenum;
         var urlParams = new URLSearchParams(window.location.search);
         pagenum = urlParams.get("pagenum");
-        var t1;
+
         if (pagenum == 1) {
             t1 = sessionStorage.getItem("trash1");
         } else if (pagenum == 2) {
@@ -110,13 +110,15 @@ item.onmousedown = function (event) {
             player_trash_category_id = 6;
         }
 
+        var gid1 = Number(gid);
+        var t2 = Number(t1);
 
         $.ajax({
             url: 'https://api.super-cleaner.kro.kr/record/check',
             type: 'POST',
             data: JSON.stringify({
-                "game_id": gid,
-                "trash_id": t1,
+                "game_id": gid1,
+                "trash_id": t2,
                 "player_trash_category_id": player_trash_category_id
             }),
             contentType: 'application/json',
