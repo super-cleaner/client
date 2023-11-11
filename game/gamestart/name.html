@@ -187,11 +187,12 @@
             }
             newtrashobj = Object.keys(trashobj).sort().reduce(
               (newObj, key) => {
-                newObj[key] = object[key];
+                newObj[key] = trashobj[key];
                 return newObj;
               },
               {}
             );
+            console.log(newtrashobj);
             var key1 = Object.keys(newtrashobj);
             for(var o = 0; o < 10; o++){
               var so = o + "";
