@@ -86,6 +86,7 @@
     <script>
         var gid = sessionStorage.getItem("game_id");
         var t1 = sessionStorage.getItem("trash1");
+        var gid1 = Number(gid);
         var t2 = Number(t1);
 
         window.onload = function () {
@@ -93,7 +94,7 @@
                 url: 'https://api.super-cleaner.kro.kr/record/',
                 type: 'POST',
                 data: {
-                    "game_id": gid,
+                    "game_id": gid1,
                     "trash_id": t2
                 },
                 dataType: 'json',
