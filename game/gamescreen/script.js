@@ -76,7 +76,7 @@ item.onmousedown = function (event) {
             t1 = sessionStorage.getItem("trash9");
         } else if (pagenum == 10) {
             t1 = sessionStorage.getItem("trash10");
-            var url10 = 'https://api.super-cleaner.kro.kr/record/result/<int:' + gid + ">";
+            var url10 = 'https://api.super-cleaner.kro.kr/record/result/' + gid;
             console.log(url10);
             $.ajax({
                 url: url10,
