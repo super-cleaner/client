@@ -36,34 +36,7 @@
             console.log('Error in Operation');
           }
         });
-
-        $.ajax({
-          url: 'https://api.super-cleaner.kro.kr/record/check',
-          type: 'POST',
-          data: {
-            "game_id": gid,
-            "trash_id": t1
-          },
-          dataType: 'json',
-          success: function (data, textStatus, xhr) {
-            console.log(data);
-            sessionStorage.setItem("trash_name", data.trash.trash_name);
-            sessionStorage.setItem("image_url", data.trash.image_url);
-
-            document.getElementById("item").src = sessionStorage.getItem("image_url");
-
-            
-        },
-          error: function (xhr, textStatus, errorThrown) {
-            console.log('Error in Operation');
-          }
-        });
-
-        // 정말 잘했어 !<br>콜라 캔은 캔에 버리면 돼
-            // 콜라 캔은 캔에 버려야 해 !<br>이제 알겠지?
-            document.getElementById("correct_answer_text").innerHTML = "정말 잘했어 !<br>" + sessionStorage.getItem("trash_name") + "은/는 " + sessionStorage.getItem("trash_category_name") + "에 버리면 돼";
-            document.getElementById("wrong_answer_text").innerHTML = sessionStorage.getItem("trash_name") + "은 " + sessionStorage.getItem("trash_category_name") +"에 버려야 해 !<br>이제 알겠지?";
-
+    
 
         }
         
@@ -76,22 +49,22 @@
         <div class="screen">
             <div class="recycle_container">
                 <div class="recycle_box" id="paper">
-                    <img src="../../images/recycle1.png" class="recycle_image" style="width:98%; height:98%;">
+                    <img src="../../images/recycle1.png" class="recycle_image" style="width:98%; height:98%;" id="paper_img">
                 </div>
                 <div class="recycle_box" id="canbottle">
                     <img src="../../images/recycle2.png" class="recycle_image" id="canbottle_img">
                 </div>
                 <div class="recycle_box" id="plastic">
-                    <img src="../../images/recycle3.png" class="recycle_image">
+                    <img src="../../images/recycle3.png" class="recycle_image" id="plastic_img">
                 </div>
                 <div class="recycle_box" id="general">
-                    <img src="../../images/recycle4.png" class="recycle_image" style="margin-left: 15px;">
+                    <img src="../../images/recycle4.png" class="recycle_image" style="margin-left: 15px;" id="general_img">
                 </div>
                 <div class="recycle_box" id="food">
-                    <img src="../../images/recycle5.png" class="recycle_image" style="margin-left: 22px;">
+                    <img src="../../images/recycle5.png" class="recycle_image" style="margin-left: 22px;" id="food_img">
                 </div>
                 <div class="recycle_box" id="bag">
-                    <img src="../../images/recycle6.png" class="recycle_image" style="margin-left: 10px;">
+                    <img src="../../images/recycle6.png" class="recycle_image" style="margin-left: 10px;" id="bag_img">
                 </div>
             </div>
 

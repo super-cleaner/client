@@ -183,7 +183,8 @@
             for (var p = 0; p < 10; p++) {
               var sp1 = sort_trashid_array[p];
               var sp2 = sort_trashnum_array[p];
-              Object.assign(trashobj, { sp2 : sp1 });
+              //Object.assign(trashobj, { sp2 : sp1 });
+              trashobj[sp2] = sp1;
             }
             newtrashobj = Object.keys(trashobj).sort().reduce(
               (newObj, key) => {

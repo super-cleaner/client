@@ -47,6 +47,37 @@ item.onmousedown = function (event) {
 
     item.onmouseup = function () {
         document.removeEventListener('mousemove', onMouseMove);
+
+        var gid = sessionStorage.getItem("game_id");
+        var t1 = sessionStorage.getItem("trash1");
+        $.ajax({
+            url: 'https://api.super-cleaner.kro.kr/record/check',
+            type: 'POST',
+            data: {
+              "game_id": gid,
+              "trash_id": t1
+            },
+            dataType: 'json',
+            success: function (data, textStatus, xhr) {
+              console.log(data);
+              sessionStorage.setItem("trash_name", data.trash.trash_name);
+              sessionStorage.setItem("image_url", data.trash.image_url);
+  
+              document.getElementById("item").src = sessionStorage.getItem("image_url");
+  
+              // 정말 잘했어 !<br>콜라 캔은 캔에 버리면 돼
+              // 콜라 캔은 캔에 버려야 해 !<br>이제 알겠지?
+              document.getElementById("correct_answer_text").innerHTML = "정말 잘했어 !<br>" + sessionStorage.getItem("trash_name") + "은/는 " + sessionStorage.getItem("trash_category_name") + "에 버리면 돼";
+              document.getElementById("wrong_answer_text").innerHTML = sessionStorage.getItem("trash_name") + "은 " + sessionStorage.getItem("trash_category_name") +"에 버려야 해 !<br>이제 알겠지?";
+          },
+            error: function (xhr, textStatus, errorThrown) {
+              console.log('Error in Operation');
+            }
+          });
+  
+
+
+
         if (currentDroppable.id == "canbottle_img") {
             answer_shade.style.height = "100%";
             answer_shade.style.display = "flex";
