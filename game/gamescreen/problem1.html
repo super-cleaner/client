@@ -10,32 +10,6 @@
 </head>
 
 <body style="display:flex; flex-direction: row;">
-    <script>
-        var gid = sessionStorage.getItem("game_id");
-        var t1 = sessionStorage.getItem("trash1");
-
-        window.onload = function () {
-            $.ajax({
-                url: 'https://api.super-cleaner.kro.kr/record/',
-                type: 'POST',
-                data: {
-                    "game_id": gid,
-                    "trash_id": t1
-                },
-                dataType: 'json',
-                success: function (data, textStatus, xhr) {
-                    console.log(data);
-                    sessionStorage.setItem("trash_name", data.trash.trash_name);
-                    sessionStorage.setItem("image_url", data.trash.image_url);
-
-                    document.getElementById("item").src = sessionStorage.getItem("image_url");
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('Error in Operation');
-                }
-            });
-        }
-    </script>
     <div class="background1" id="container">
         <img src="../../images/background.png" class="backgroundimage">
         <div class="process_box">
@@ -109,6 +83,32 @@
             <button class="next_btn" id="wrong_next_btn">다음으로</button>
         </div>
     </div>
+    <script>
+        var gid = sessionStorage.getItem("game_id");
+        var t1 = sessionStorage.getItem("trash1");
+
+        window.onload = function () {
+            $.ajax({
+                url: 'https://api.super-cleaner.kro.kr/record/',
+                type: 'POST',
+                data: {
+                    "game_id": gid,
+                    "trash_id": t1
+                },
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    console.log(data);
+                    sessionStorage.setItem("trash_name", data.trash.trash_name);
+                    sessionStorage.setItem("image_url", data.trash.image_url);
+
+                    document.getElementById("item").src = sessionStorage.getItem("image_url");
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        }
+    </script>
     <script type="text/javascript" src="./script.js"></script>
     <script>
         document.querySelector("#correct_next_btn").addEventListener("click", navigateToNextPage_Correct);
