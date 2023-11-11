@@ -114,12 +114,12 @@ item.onmousedown = function (event) {
         $.ajax({
             url: 'https://api.super-cleaner.kro.kr/record/check',
             type: 'POST',
-            data: {
+            data: JSON.stringify({
                 "game_id": gid,
                 "trash_id": t1,
                 "player_trash_category_id": player_trash_category_id
-            },
-            dataType: 'json',
+            }),
+            contentType: 'application/json',
             success: function (data, textStatus, xhr) {
                 console.log(data);
                 sessionStorage.setItem("trash_category_name", data.trash.trash_category_name);
