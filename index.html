@@ -121,24 +121,6 @@
       </div>
     </div>
     <script>
-      window.onload = function () {
-      $.ajax({
-        url: 'https://api.super-cleaner.kro.kr/',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data, textStatus, xhr) {
-          console.log(data);
-          console.log(textStatus);
-          console.log(xhr);
-        },
-        error: function (xhr, textStatus, errorThrown) {
-          console.log(xhr);
-          console.log(textStatus);
-          console.log(errorThrown);
-          console.log('Error in Operation');
-        }
-      });
-    }
       function navigateToNextPage() {
         window.location.href = "game/gamestart/name.html";
       }
