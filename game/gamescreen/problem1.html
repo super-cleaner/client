@@ -97,11 +97,11 @@
             $.ajax({
                 url: 'https://api.super-cleaner.kro.kr/record/',
                 type: 'POST',
-                data: {
+                data: JSON.stringify({
                     "game_id": gid1,
                     "trash_id": t2
-                },
-                dataType: 'json',
+                }),
+                contentType: 'application/json',
                 success: function (data, textStatus, xhr) {
                     console.log(data);
                     sessionStorage.setItem("trash_name", data.trash.trash_name);
