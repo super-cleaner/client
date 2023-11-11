@@ -155,14 +155,14 @@
       sessionStorage.setItem("player_name", name);
       // 이름이 제공되었는지 확인
       if (name.trim() !== "") {
-        setTimeout(() => first(second), 0);
+        first(second());
       } else {
         // 이름이 제공되지 않은 경우 처리
         alert("이름을 입력하세요!");
       }
     }
 
-    const first = callback => {
+    function task1(callback) {
       $.ajax({
         url: 'https://api.super-cleaner.kro.kr/game/',
         type: 'POST',
@@ -229,9 +229,11 @@
           console.log('Error in Operation');
         }
       });
+
+      callback();
     }
 
-    const second = () => {
+    function task2(callback) {
       window.location.href = "start.html";
     }
 
