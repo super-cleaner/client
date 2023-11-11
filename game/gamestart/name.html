@@ -129,11 +129,77 @@
 
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
+
+    .answer_shade {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.77);
+      z-index: 1001;
+    }
+
+    .correct_answer_box {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      width: 871.66px;
+      height: 451.66px;
+      border-radius: 30px;
+      background: #FEEFC8;
+      align-self: center;
+      left: calc(var(--width1) - 435.83px);
+      align-items: center;
+      justify-content: center;
+      z-index: 1002;
+    }
+
+    .answer_img {
+      width: 166.66px;
+      height: 276.3716px;
+      padding-left: 107.5px;
+    }
+
+    .answer_text_box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 597.5px;
+      height: 100%;
+    }
+
+    .answer_text {
+      color: #000;
+      text-align: center;
+      font-family: iceHimchan;
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .next_btn {
+      width: 219.166px;
+      height: 80.833px;
+      border-radius: 50px;
+      background: #004938;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      color: #FFF;
+      text-align: center;
+      font-family: iceHimchan;
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      cursor: pointer;
+    }
   </style>
   <div id="container">
     <div id="title">슈퍼클리너</div>
     <div id="text">먼저 너의 이름을 알려줘!</div>
-    <button type="button" id="next" onclick="navigateToNextPage()">다음으로</button>
+    <button type="button" id="next" onclick="checkNameStatus()">다음으로</button>
     <div>
       <input id="namebox" />
     </div>
@@ -141,9 +207,17 @@
       <img src="../../images/logo.png" style="width: 100%; height: 100%;" />
     </div>
   </div>
-  <!-- <script src="../js/app.js"></script> -->
+
+  <div class="answer_shade" style="height: 0px; display: none;" id="answer_shade"></div>
+  <div class="correct_answer_box" style="height: 0px; display: none;" id="correct_answer_box">
+    <img src="../../images/logo.png" class="answer_img">
+    <div class="answer_text_box">
+      <p class="answer_text" id="correct_answer_text"></p>
+      <button class="next_btn" id="correct_next_btn" onclick="navigateToNextPage()">다음으로</button>
+    </div>
+  </div>
   <script>
-    function navigateToNextPage() {
+    function checkNameStatus() {
       // 입력 상자에서 이름을 가져옴
       var name = document.getElementById("namebox").value;
       var trashid_array = {};
@@ -155,85 +229,91 @@
       sessionStorage.setItem("player_name", name);
       // 이름이 제공되었는지 확인
       if (name.trim() !== "") {
-        task1(task2());
+        $.ajax({
+          url: 'https://api.super-cleaner.kro.kr/game/',
+          type: 'POST',
+          data: {
+            "player_name": name,
+          },
+          dataType: 'json',
+          success: function (data, textStatus, xhr) {
+            var newtrashid_array = [];
+            var newtrashvalue_array = [];
+
+            console.log(data);
+            console.log(textStatus);
+            console.log(xhr);
+
+            sessionStorage.setItem("game_id", data.game_id);
+            trashid_array = data.random_list;
+            console.log(trashid_array);
+            for (var l = 0; l < 10; l++) {
+              var key = Object.keys(trashid_array)[l];
+              console.log(key);
+              sort_trashid_array.push(key);
+              sort_trashnum_array.push(trashid_array[key]);
+            }
+            console.log(sort_trashid_array);
+            console.log(sort_trashnum_array);
+            for (var p = 0; p < 10; p++) {
+              var sp1 = sort_trashid_array[p];
+              var sp2 = sort_trashnum_array[p];
+              //Object.assign(trashobj, { sp2 : sp1 });
+              trashobj[sp2] = sp1;
+            }
+            newtrashobj = Object.keys(trashobj).sort().reduce(
+              (newObj, key) => {
+                newObj[key] = trashobj[key];
+                return newObj;
+              },
+              {}
+            );
+            console.log(newtrashobj);
+            var key1 = Object.keys(newtrashobj);
+            for (var o = 0; o < 10; o++) {
+              var so = o + "";
+              newtrashid_array.push(key1[o]);
+              newtrashvalue_array.push(newtrashobj[key1[o]]);
+              console.log(newtrashvalue_array[so]);
+            }
+            sessionStorage.setItem("trash1", newtrashvalue_array[0]);
+            sessionStorage.setItem("trash2", newtrashvalue_array[1]);
+            sessionStorage.setItem("trash3", newtrashvalue_array[2]);
+            sessionStorage.setItem("trash4", newtrashvalue_array[3]);
+            sessionStorage.setItem("trash5", newtrashvalue_array[4]);
+            sessionStorage.setItem("trash6", newtrashvalue_array[5]);
+            sessionStorage.setItem("trash7", newtrashvalue_array[6]);
+            sessionStorage.setItem("trash8", newtrashvalue_array[7]);
+            sessionStorage.setItem("trash9", newtrashvalue_array[8]);
+            sessionStorage.setItem("trash10", newtrashvalue_array[9]);
+
+          },
+          error: function (xhr, textStatus, errorThrown) {
+            console.log(xhr);
+            console.log(textStatus);
+            console.log(errorThrown);
+            console.log('Error in Operation');
+          }
+        });
+
+        document.getElementById("correct_answer_text").innerHTML = "안녕! " + name + "<br> 이 이름이 맞지?";
+
+        const answer_shade = document.querySelector("#answer_shade");
+        const correct_answer_box = document.querySelector("#correct_answer_box");
+
+        answer_shade.style.height = "100%";
+        answer_shade.style.display = "flex";
+        correct_answer_box.style.height = "451.66px";
+        correct_answer_box.style.display = "flex";
       } else {
         // 이름이 제공되지 않은 경우 처리
         alert("이름을 입력하세요!");
       }
+
+
     }
 
-    function task1(callback) {
-      $.ajax({
-        url: 'https://api.super-cleaner.kro.kr/game/',
-        type: 'POST',
-        data: {
-          "player_name": name,
-        },
-        dataType: 'json',
-        success: function (data, textStatus, xhr) {
-          var newtrashid_array = [];
-          var newtrashvalue_array = [];
-
-          console.log(data);
-          console.log(textStatus);
-          console.log(xhr);
-
-          sessionStorage.setItem("game_id", data.game_id);
-          trashid_array = data.random_list;
-          console.log(trashid_array);
-          for (var l = 0; l < 10; l++) {
-            var key = Object.keys(trashid_array)[l];
-            console.log(key);
-            sort_trashid_array.push(key);
-            sort_trashnum_array.push(trashid_array[key]);
-          }
-          console.log(sort_trashid_array);
-          console.log(sort_trashnum_array);
-          for (var p = 0; p < 10; p++) {
-            var sp1 = sort_trashid_array[p];
-            var sp2 = sort_trashnum_array[p];
-            //Object.assign(trashobj, { sp2 : sp1 });
-            trashobj[sp2] = sp1;
-          }
-          newtrashobj = Object.keys(trashobj).sort().reduce(
-            (newObj, key) => {
-              newObj[key] = trashobj[key];
-              return newObj;
-            },
-            {}
-          );
-          console.log(newtrashobj);
-          var key1 = Object.keys(newtrashobj);
-          for (var o = 0; o < 10; o++) {
-            var so = o + "";
-            newtrashid_array.push(key1[o]);
-            newtrashvalue_array.push(newtrashobj[key1[o]]);
-            console.log(newtrashvalue_array[so]);
-          }
-          sessionStorage.setItem("trash1", newtrashvalue_array[0]);
-          sessionStorage.setItem("trash2", newtrashvalue_array[1]);
-          sessionStorage.setItem("trash3", newtrashvalue_array[2]);
-          sessionStorage.setItem("trash4", newtrashvalue_array[3]);
-          sessionStorage.setItem("trash5", newtrashvalue_array[4]);
-          sessionStorage.setItem("trash6", newtrashvalue_array[5]);
-          sessionStorage.setItem("trash7", newtrashvalue_array[6]);
-          sessionStorage.setItem("trash8", newtrashvalue_array[7]);
-          sessionStorage.setItem("trash9", newtrashvalue_array[8]);
-          sessionStorage.setItem("trash10", newtrashvalue_array[9]);
-
-        },
-        error: function (xhr, textStatus, errorThrown) {
-          console.log(xhr);
-          console.log(textStatus);
-          console.log(errorThrown);
-          console.log('Error in Operation');
-        }
-      });
-
-      callback();
-    }
-
-    function task2(callback) {
+    function navigateToNextPage() {
       window.location.href = "start.html";
     }
   </script>
