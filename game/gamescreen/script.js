@@ -116,7 +116,7 @@ item.onmousedown = function (event) {
         console.log(gid1);
         console.log(t2);
         console.log(player_trash_category_id);
-        console.log(typeof(player_trash_category_id));
+        console.log(typeof (player_trash_category_id));
 
         $.ajax({
             url: 'https://api.super-cleaner.kro.kr/record/check',
@@ -136,6 +136,23 @@ item.onmousedown = function (event) {
                 // 콜라 캔은 캔에 버려야 해 !<br>이제 알겠지?
                 document.getElementById("correct_answer_text").innerHTML = "정말 잘했어 !<br>" + sessionStorage.getItem("trash_name") + "은/는 " + sessionStorage.getItem("trash_category_name") + "에 버리면 돼";
                 document.getElementById("wrong_answer_text").innerHTML = sessionStorage.getItem("trash_name") + "은 " + sessionStorage.getItem("trash_category_name") + "에 버려야 해 !<br>이제 알겠지?";
+
+
+                var isan = sessionStorage.getItem("is_answer");
+                console.log(typeof (isan));
+
+                if (isan == "true") {
+                    answer_shade.style.height = "100%";
+                    answer_shade.style.display = "flex";
+                    correct_answer_box.style.height = "451.66px";
+                    correct_answer_box.style.display = "flex";
+                } else {
+                    answer_shade.style.height = "100%";
+                    answer_shade.style.display = "flex";
+                    wrong_answer_box.style.height = "451.66px";
+                    wrong_answer_box.style.display = "flex";
+                }
+                item.onmouseup = null;
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log('Error in Operation');
@@ -144,21 +161,6 @@ item.onmousedown = function (event) {
 
 
 
-        var isan = sessionStorage.getItem("is_answer");
-        console.log(typeof(isan));
-
-        if (isan == "true") {
-            answer_shade.style.height = "100%";
-            answer_shade.style.display = "flex";
-            correct_answer_box.style.height = "451.66px";
-            correct_answer_box.style.display = "flex";
-        } else {
-            answer_shade.style.height = "100%";
-            answer_shade.style.display = "flex";
-            wrong_answer_box.style.height = "451.66px";
-            wrong_answer_box.style.display = "flex";
-        }
-        item.onmouseup = null;
     };
 
 };
