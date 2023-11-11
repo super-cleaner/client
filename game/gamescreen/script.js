@@ -145,7 +145,7 @@ item.onmousedown = function (event) {
 
 
 
-        if (sessionStorage.getItem("is_answer") == true) {
+        if (sessionStorage.getItem("is_answer") == "true") {
             answer_shade.style.height = "100%";
             answer_shade.style.display = "flex";
             correct_answer_box.style.height = "451.66px";
