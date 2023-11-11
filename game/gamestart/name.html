@@ -174,9 +174,12 @@
             console.log(trashid_array);
             for (var l = 0; l < 10; l++) {
               var key = Object.keys(trashid_array)[l];
+              console.log(key);
               sort_trashid_array.push(key);
               sort_trashnum_array.push(trashid_array[key]);
             }
+            console.log(sort_trashid_array);
+            console.log(sort_trashnum_array);
             for (var p = 0; p < 10; p++) {
               trashobj.sort_trashnum_array[p] = sort_trashid_array[p];
             }

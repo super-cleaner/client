@@ -23,6 +23,10 @@
           dataType: 'json',
           success: function (data, textStatus, xhr) {
             console.log(data);
+            sessionStorage.setItem("trash_name", data.trash.trash_name);
+            sessionStorage.setItem("image_url", data.trash.image_url);
+
+            document.getElementById("item").src = sessionStorage.getItem("image_url");
         },
           error: function (xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
