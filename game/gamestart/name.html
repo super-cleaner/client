@@ -170,7 +170,6 @@
             console.log(xhr);
 
             sessionStorage.setItem("game_id", data.game_id);
-            data_array = JSON.parse(data);
             trashid_array = data_array.random_list;
             for (var l = 0; l < 10; l++) {
               var key = Object.keys(trashid_array[l])[0];
