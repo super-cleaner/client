@@ -113,6 +113,11 @@ item.onmousedown = function (event) {
         var gid1 = Number(gid);
         var t2 = Number(t1);
 
+        console.log(gid1);
+        console.log(t2);
+        console.log(player_trash_category_id);
+        console.log(typeof(player_trash_category_id));
+
         $.ajax({
             url: 'https://api.super-cleaner.kro.kr/record/check',
             type: 'POST',
